@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="videos">
+        <div class="videos-container">
+
+        <div class="videos-list" >
+            <h2 class="course-title">{{ chapiter.name }}</h2>
+            <ol>
+                {% for v in chapiter.youtube_links_set.all %}
+                    <a href="{{ v.get_absolute_url }}"><li>{{ v.name }}</li></a>
+                {% endfor %}
+            </ol>
+        </div>
+        <div class="video">
+
+        <div class="container">
+            <h2 class="video-title">{{ video.name }}</h2>
+            <iframe  src="{{ video.link }}" frameborder="0" gesture="media" allowfullscreen></iframe>
+            <p>انه ببعض مسؤولية في. إذ كما خيار العالمية, هو ضرب أراضي ومحاولة, هو مكن اعتداء أسابيع استراليا،. جهة دارت معقل مسرح بل</p>
+            <button>التالي</button>
+         </div>
+        </div>
+    </div><!--/container-->
+    </section>
+
+    <!--/videos-->
+
+{% endblock content %}

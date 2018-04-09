@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} || الرئيسة{% endblock title %}
+{% block header %}<header>{% endblock %}
+{% block user_info %}                    <div class="parent-container">
+                    {% if user.is_authenticated %}
+                        <a href="" class="profile-pic">
+                        <img src="http://graph.facebook.com/{{user.social_auth.all.0.uid}}/picture?width=80&height=80">
+                        <h4>{{ user.get_username }} </h4>
+                        </a>
+                    {% endif %}{{ block.super }}
+{% endblock user_info %}
+{% block user_info2 %}</div>{% endblock user_info2 %}
+{% block content %}
+
+<div class="container"><!--container -->
+					<div class="slogan_container">
+                        {% load static %}
+						<img src="{% static 'images/bg.gif' %}">
+						<div class="slogan">
+							<h2>تعلم تطوير صفحات الويب<br> و  البرمجة</h2>
+							<p>نوفر لكم دروس مجانية في تصميم و تطوير صفحات الويب كما نوفر دروس لتبدئ في  تعلم البرمجة. سنساعدكم في تطوير مهارتكم و في حل الصعوبات التي تواجهكم.</p>
+                            {% if not user.is_authenticated %}
+                                <a href="{% url 'social:begin' 'facebook' %}"><button><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>دخول بحساب فايسبوك</button></a>
+						    {% endif %}
+                        </div><!--/slogan-->
+					</div><!--/ -->
+				</div>
+
+		{% block header2 %}</header><!--/header-->{% endblock header2 %}
+
+		<section class="courses">
+			<div class="switch-titles">
+				<a href=""><h3>كل الدروس</h3></a>
+				{% if user.is_authenticated %}
+                    <a href=""><h3>دروسي</h3></a>
+                {% endif %}
+			</div>
+			<div class="container">
+                {% if user.is_authenticated %}
+                    {% for c in user.course_set.all %}
+                        <a href="{{c.slug}}" class="card my-course">
+                            <img src="{{ c.image.url }}">
+                            <div class="overlay"></div>
+                            <h3>{{ c.title }}</h3>
+                            <p>{{ c.summary }}</p>
+                        </a>
+                    {% endfor %}
+                {% endif %}
+				{% for c in course_list %}
+                <a href="{{c.slug}}" class="card all">
+					<img src="{{ c.image.url }}">
+					<div class="overlay"></div>
+					<h3>{{ c.title }}</h3>
+					<p>{{ c.summary }}</p>
+				</a>
+                {% endfor %}
+			</div><!--/container-->
+
+		</section><!--/courses-->
+
+		<section class="discover">
+			<div class="main">
+				<div>
+					<h2> <i class="fa fa-paper-plane" aria-hidden="true"></i>مغامرة جديدة </h2>
+					<p>استعد للغوص في عالم الويب و البرمجة بواسطة دروسنا المبسّطة و التي التي تستهدف جميع الأعمار.</p>
+					<a href=""><button>إبدأ الآن</button></a>
+				</div>
+			</div>
+		</section><!--/discover-->
+
+		<section class="path">
+			<h1>خطوات التعلم معنا</h1>
+			<div class="container">
+				<div class="step">
+					<i class="fa fa-book" aria-hidden="true"></i>
+					<div class="description">
+						<h2>سجّل في دروس تطوير الويب و البرمجة</h2>
+						<p>لأرض وأكثرها يتم هو. ذلك الشمال المشترك استطاعوا أن. ثم والقرى الرئيسية بها. جعل ٣٠ اللا وإعلان الأسيوي, نقطة ميناء ما قام. بـ نفس جدول وبحلول مقاومة, ما وبعض وتنصيب سنغافورة أما. من تعد الآلاف حاملات التنازلي, أجزاء والحزب أم بحث. لكل قد أكثر أملاً.</p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="description">
+						<h2>طبق ما تعلمته بتطوير موقع الويب الخاص بك</h2>
+						<p>لأرض وأكثرها يتم هو. ذلك الشمال المشترك استطاعوا أن. ثم والقرى الرئيسية بها. جعل ٣٠ اللا وإعلان الأسيوي, نقطة ميناء ما قام. بـ نفس جدول وبحلول مقاومة, ما وبعض وتنصيب سنغافورة أما. من تعد الآلاف حاملات التنازلي, أجزاء والحزب أم بحث. لكل قد أكثر أملاً.</p>
+					</div>
+					<i class="fa fa-code" aria-hidden="true"></i>
+
+				</div>
+				<div class="step">
+					<i class="fa fa-briefcase" aria-hidden="true"></i>
+					<div class="description">
+						<h2>إبدأ مسيرك المهنية كمبرمج أو مطور ويب.</h2>
+						<p>لأرض وأكثرها يتم هو. ذلك الشمال المشترك استطاعوا أن. ثم والقرى الرئيسية بها. جعل ٣٠ اللا وإعلان الأسيوي, نقطة ميناء ما قام. بـ نفس جدول وبحلول مقاومة, ما وبعض وتنصيب سنغافورة أما. من تعد الآلاف حاملات التنازلي, أجزاء والحزب أم بحث. لكل قد أكثر أملاً.</p>
+					</div>
+				</div>
+			</div><!--/container-->
+		</section>
+
+		<section class="contact">
+			<div class="mother">
+				<div class="container">
+				<h2>إتصل بنا</h2>
+				<p>وبالرغم, معقل وانهاء ومحاولة تم الا. بـ شاسعة اكتوبر المعاهدات حول. كل كان سكان مسؤولية, اوروبا الساحلية أي تعد. هذا تطوير الإتحاد عل, دأبوا وبدون لإعلان وتم</p>
+				<a href=""><button>راسلنا الآن</button></a>
+			</div>
+			</div>
+		</section>
+{% endblock content %}
+

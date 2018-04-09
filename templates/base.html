@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}نديفلوبي{% endblock title %}</title>
+	<meta name="viewport" content="width=device-width initial-scale=1.0">
+	<meta charset="utf-8">
+    {% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%} ">
+    <link href="https://fonts.googleapis.com/css?family=Changa" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/prism.css'%} ">
+</head>
+<body>
+	<!--header-->
+		{% block header %}{% endblock %}
+
+				<nav>
+                {% block user_info %}{% endblock user_info %}
+                    <ol>
+                        <a href="{% url 'home' %}" class="logo"><li>نديفلوبي</li></a>
+                        <a href="{% url 'home' %}"><li>الرئيسية</li></a>
+                        <a href=""><li>دروس </li></a>
+                        <a href=""><li>مقالات</li></a>
+                        <a href=""><li>مسارات التعليم</li></a>
+                    </ol>
+                    {% block user_info2 %}{% endblock user_info2 %}
+                </nav>
+            {% block content %}
+            {% block header2 %}{% endblock header2 %}
+            {% endblock content %}
+        <footer>
+			<div class="container">
+				<p> نقطة ميناء ما قام. بـ نفس جدول وبحلول مقاومة, ما وبعض وتنصيب سنغافورة أما. من تعد الآلاف حاملات التنازلي, أجزاء والحزب أم بحث.</p>
+				<ol class="social">
+					<a href=""><li class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></li></a>
+					<a href=""><li class="ytb" ><i class="fa fa-youtube" aria-hidden="true"></i></li></a>
+					<a href=""><li class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></li></a>
+					<a href=""><li class="github"><i class="fa fa-github" aria-hidden="true"></i></li></a>
+				</ol>
+				<h5>كل الحقوق محفوظة © 2017</h5>
+			</div>
+		</footer>
+
+
+
+	<!--scripts-->
+    <script type="text/javascript" src="{% static 'js/prism.js'%}"></script>
+	<script type="text/javascript" src="{% static 'js/index.js'%}"></script>
+    <script type="text/javascript">
+            var el = document.querySelector('.videos-list');
+            SimpleScrollbar.initEl(el);
+    </script>
+</body>
+</html>
